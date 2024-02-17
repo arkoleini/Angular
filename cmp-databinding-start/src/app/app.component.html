@@ -1,9 +1,24 @@
 <div class="container">
-  <app-cockpit></app-cockpit>
+  <app-cockpit (sc)="onServerAdded($event)"
+              (bpc)="onBlueprintAdded($event)"
+    ></app-cockpit>
  <hr>
   <div class="row">
     <div class="col-xs-12">
-      <app-server-element *ngFor="let serverElement of serverElements"></app-server-element>
+      <app-server-element  [srvElelement]=serverElements></app-server-element>
     </div>
   </div>
+  <hr>
+  <p>Modal starts here to show ng-content</p>
+  <app-modal>
+    <h2 class="modal-title">Confirmation</h2>
+    <div class="modal-body">
+      Are you sure you want to proceed with this action?
+    </div>
+    <div class="modal-footer">
+      <button (click)="confirmAction()">Confirm</button>
+      <button (click)="cancelAction()">Cancel</button>
+    </div>
+  </app-modal>
 </div>
+
