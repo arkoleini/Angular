@@ -8,12 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   @Output('itemSelected') selectedItem = new EventEmitter<string>();
 
-
-  onSelectRecipes(){
-    this.selectedItem.emit('Recipes');
-  }
-
-  onSelectShoppinglist(){
-    this.selectedItem.emit('ShoppingList');
+  onIemSelected(itemSelected:string){
+    this.selectedItem.emit(itemSelected);
   }
 }
