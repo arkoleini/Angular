@@ -16,7 +16,12 @@ export class AccountService {
         {
           name: 'Hidden Account',
           status: 'unknown'
+        },
+        {
+          name: 'Test2',
+          status: 'unknown'
         }
+
       ];
 
       constructor(private logger: LoggingService) {}
