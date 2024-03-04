@@ -2,3 +2,5 @@
 <p>User name is {{user.name}} _NAME_</p>
 <hr>
 <a [routerLink]="['/users',10,'Anna']">Load Anna (10)</a>
+<hr>
+<a [routerLink]="['/users',10,'Anna']" [queryParams]="{isvalid: true, level:11, class:'slc145'}" fragment="loading">Link with query paramters</a>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -8,8 +9,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   user: {id: number, name: string};
+  paramSubscription: Subscription;            //define a property type of subscription
 
   constructor(private router: ActivatedRoute) {}
 
@@ -17,11 +19,16 @@ export class UserComponent implements OnInit {
     this.user = { id : this.router.snapshot.params['id'],
                   name: this.router.snapshot.params['name'] }
 
-    this.router.params.subscribe( param=> {
+    this.paramSubscription = this.router.params.subscribe( param=> {    //Assign value to subscription
       console.log(`this is user: ${JSON.stringify(param)}`)
       this.user.id = param.id;
       this.user.name= param.name;
     })
   };
+
+  ngOnDestroy(): void {
+    this.paramSubscription.unsubscribe()   //need to manually unsubscribe
+  }
+
 
 }
