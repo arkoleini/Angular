@@ -8,17 +8,23 @@ import { UserComponent } from "./users/user/user.component";
 import { UsersComponent } from "./users/users.component";
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from "./auth-guard.service";
+import { CanDeactivateGuard } from "./cad-deactivate-guard.service";
 
 const appRoutes :Routes=[{path: '',component:HomeComponent},
                       {path: 'users',component:UsersComponent, children:[
                         {path: ':id/:name', component:UserComponent},
                       ]},
-                      {path: 'servers',canActivate:[AuthGuard] ,component:ServersComponent, children:[
-                        {path: ':id', component: ServerComponent},
-                        {path: ':id/edit', component: EditServerComponent},
-                      ]},
-                      {path: '**', component:PageNotFoundComponent}
-                    ];
+                      {
+                        path: 'servers',
+                        // canActivate: [AuthGuard],
+                        canActivateChild: [AuthGuard],
+                        component: ServersComponent,
+                        children: [
+                        { path: ':id', component: ServerComponent },
+                        { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
+                      ] },
+                     {path: '**', component:PageNotFoundComponent}
+                       ];
                     
 @NgModule({
     imports:[
