@@ -18,17 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './cad-deactivate-guard.service';
-
-const appRoutes :Routes=[{path: '',component:HomeComponent},
-                      {path: 'users',component:UsersComponent, children:[
-                        {path: ':id/:name', component:UserComponent},
-                      ]},
-                      {path: 'servers',component:ServersComponent, children:[
-                        {path: ':id', component: ServerComponent},
-                        {path: ':id/edit', component: EditServerComponent},
-                      ]},
-                      {path: '**', component:PageNotFoundComponent}
-                    ];
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { serverResolver } from './servers/server/server-resolver.service';
 
 @NgModule({
   declarations: [
@@ -39,14 +30,15 @@ const appRoutes :Routes=[{path: '',component:HomeComponent},
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [ServersService, AuthService, AuthGuard, CanDeactivateGuard],
+  providers: [ServersService, AuthService, AuthGuard, CanDeactivateGuard,serverResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
