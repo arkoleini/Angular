@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
+import{ SubscribeService } from './subscribe.service';
 import { CustomeObservableComponent } from './custome-observable/custome-observable.component';
 
 @NgModule({
@@ -18,7 +19,7 @@ import { CustomeObservableComponent } from './custome-observable/custome-observa
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SubscribeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

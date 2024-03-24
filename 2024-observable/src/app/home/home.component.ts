@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit, OnDestroy {
           setInterval(() => {
             observer.next(i);
             i++;
+            if (i>5){
+              observer.complete();
+            }
           }, 1000);
         });
 
