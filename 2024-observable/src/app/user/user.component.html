@@ -1,2 +1,8 @@
 <p>User with <strong>ID {{ id }}</strong> was loaded</p>
+<p>
 <button class="btn btn-primary" (click)="onActivate()">User Avaialble</button>
+</p>
+<p>
+    <button class="sliding-button"  [class.active]="isSliding" (click)="onButtonClick()">Slide</button>
+</p>
+

@@ -1,3 +1,30 @@
-.container {
-  margin-top: 30px;
+.sliding-button {
+  position: relative;
+  padding: 10px 20px;
+  border: none;
+  background-color: #bbd71c;
+  color: rgb(60, 164, 198);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+ /* Sliding effect */
+.sliding-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* Initially hidden on the left */
+  width: 100%;
+  height: 100%;
+  background-color: #32a8b7;
+  transition: all 0.3s ease;
+}
+
+
+.sliding-button {
+  /* Similar styles as before */
+}
+
+.sliding-button.active::after {
+  left: 0; /* Always show sliding effect when active */
 }

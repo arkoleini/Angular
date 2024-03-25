@@ -8,6 +8,7 @@ import { SubscribeService } from './subscribe.service';
 })
 export class AppComponent implements OnInit {
   public userActivated= false;
+  isSliding = false; // Track the sliding state
 
   constructor(private subscribeService: SubscribeService) {}
 
@@ -17,5 +18,14 @@ export class AppComponent implements OnInit {
       console.log(`didActivated: ${didActivated}`);
       this.userActivated = didActivated;
     });
+
+    this.subscribeService.isSliding$.subscribe((isSliding) => {
+      this.isSliding = isSliding; // Update local state based on observable
+    });
+  }
+
+  onslidingButtonClick(){
+    this.subscribeService.toggleSlide();
+    console.log(`toggle button clicked`);
   }
 }
