@@ -1,0 +1,17 @@
+/* server-list.component.css */
+:host {
+    display: block;
+    background-color: skyblue; /* Set main page background color */
+  }
+  
+  .server-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: lightyellow; /* Set server box background color */
+  }
+  
+  .filtered {
+    background-color: skyblue;
+  }

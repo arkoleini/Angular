@@ -1,0 +1,18 @@
+<!-- app.component.html -->
+
+<div [class.filtered]="isFiltered">
+  <h2>Servers List</h2>
+  <input type="text" [(ngModel)]="filteredStatus" (input)="applyFilter(filteredStatus)">
+  <hr>
+  <ul>
+    <li *ngFor="let server of servers | customFilter:filteredStatus:'instanceType'" class="server-box">
+      <h3>{{ server.name }}</h3>
+      <p>Instance Type: {{ server.instanceType }}</p>
+      <p>Status: {{ server.status }}</p>
+      <p>Started: {{ server.started }}</p>
+    </li>
+  </ul>
+
+</div>
+
+
